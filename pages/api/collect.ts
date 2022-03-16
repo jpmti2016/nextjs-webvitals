@@ -1,10 +1,9 @@
-import { webvital } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../lib/prisma";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<webvital>
+  res: NextApiResponse
 ) {
   try {
     if (req.method === "POST") {
@@ -26,7 +25,7 @@ export default async function handler(
         },
       });
 
-      return res.status(200).json(webVital);
+      res.status(200).json(webVital);
     }
   } catch (error) {
     res.status(500).json({ error: "Error collecting webvital" });

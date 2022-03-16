@@ -1,15 +1,13 @@
+import { webvital } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../lib/prisma";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<webvital>
 ) {
   try {
-    if (req.method === "GET") {
-      const websites = await prisma.webvital.findMany();
-      res.status(200).json(websites);
-    } else if (req.method === "POST") {
+    if (req.method === "POST") {
       const { body } = req;
 
       console.log("api collect POST body", body);

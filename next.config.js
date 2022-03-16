@@ -15,8 +15,8 @@ const nextConfig = {
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' nextjs-webvitals.vercel.app;
-  child-src *.youtube.com *.google.com *.twitter.com;
-  style-src 'self' 'unsafe-inline' nextjs-webvitals.vercel.app
+  child-src nextjs-webvitals.vercel.app;
+  style-src 'self' 'unsafe-inline' nextjs-webvitals.vercel.app;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;

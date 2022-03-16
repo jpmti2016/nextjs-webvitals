@@ -33,5 +33,4 @@ export default async function handler(
   } catch (error) {
     res.status(500).json({ error: "Error collecting webvital" });
   }
-  res.status(200).json({ name: "collect API" });
 }

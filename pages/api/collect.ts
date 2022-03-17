@@ -7,27 +7,28 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
-      const { body } = req;
-
-      console.log("api collect POST body", body);
-      const { id, label, name, url, startTime, value } = body;
       const website_id = process.env.WEBSITE_ID;
 
-      const webVital = await prisma.webvital.create({
-        data: {
-          webvital_id: id,
-          website_id,
-          url: "/test", //TODO
-          name,
-          start_time: startTime,
-          value,
-          label,
-        },
-      });
+      const { webvital_id, label, name, start_time, value, url } = JSON.parse(
+        req.body
+      );
 
+      const data = {
+        webvital_id,
+        website_id: Number(website_id),
+        url,
+        name,
+        start_time: parseFloat(start_time),
+        value: parseFloat(value),
+        label,
+      };
+
+      const webVital = await prisma.webvital.create({
+        data,
+      });
       res.status(200).json(webVital);
     }
   } catch (error) {
-    res.status(500).json({ error: "Error collecting webvital" });
+    res.status(500).json({ error });
   }
 }

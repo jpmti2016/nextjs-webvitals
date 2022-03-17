@@ -14,9 +14,9 @@ const nextConfig = {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' nextjs-webvitals.vercel.app;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' nextjs-webvitals.vercel.app jpmti2016.com;
   child-src nextjs-webvitals.vercel.app;
-  style-src 'self' 'unsafe-inline' nextjs-webvitals.vercel.app;
+  style-src 'self' 'unsafe-inline' nextjs-webvitals.vercel.app jpmti2016.com;
   img-src * blob: data:;
   media-src 'none';
   connect-src *;

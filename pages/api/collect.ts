@@ -7,14 +7,11 @@ export default async function handler(
 ) {
   try {
     if (req.method === "POST") {
-      const website_id = process.env.WEBSITE_ID;
-
-      const { webvital_id, label, name, start_time, value, url } = JSON.parse(
-        req.body
-      );
+      const { label, name, start_time, value, url } = JSON.parse(req.body);
+      const website_id =
+        JSON.parse(req.body).website_id || process.env.WEBSITE_ID;
 
       const data = {
-        webvital_id,
         website_id: Number(website_id),
         url,
         name,
@@ -29,6 +26,7 @@ export default async function handler(
       res.status(200).json(webVital);
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error });
   }
 }
